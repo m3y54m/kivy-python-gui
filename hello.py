@@ -20,6 +20,8 @@ class HelloWorld(App):
         self.window.cols = 1
 
         #Add widgets to window
+        self.window.add_widget(Image(source="parrot.jpg"))
+
         self.greeting = Label(text='Hello world!')
         self.window.add_widget(self.greeting)
 
