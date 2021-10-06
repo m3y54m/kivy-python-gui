@@ -5,11 +5,14 @@ from kivy.app import App
 from kivy.uix.label import Label
 
 
-class MyApp(App):
+class HelloWorld(App):
 
     def build(self):
-        return Label(text='Hello world')
+
+        self.greeting = Label(text='Hello world!')
+        
+        return self.greeting
 
 
 if __name__ == '__main__':
-    MyApp().run()
+    HelloWorld().run()
