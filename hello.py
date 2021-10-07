@@ -1,71 +1,27 @@
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-from kivy.uix.image import Image
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.app import App
 import kivy
 kivy.require("2.0.0")  # replace with your installed kivy version
 
 
-# Class name becomes defaut window title
+class HelloWorldUI(RelativeLayout):
+    # This class is required by kivy design language files
+    # You can use Widget or Layout types for this class
+    pass
+
+
 class HelloWorld(App):
+    # This class constructs the app window
     def build(self):
-        # Set a custom windows title
+        # Set a custom window title
         self.title = "Hello World App"
-        # Create a new GridLayout for placement of windows components
-        self.window = GridLayout()
-        # Set number of columns in GridLayout
-        self.window.cols = 1
-        # GridLayout styling
-        self.window.size_hint = (0.6, 0.7)
-        self.window.pos_hint = {"center_x": 0.5, "center_y": 0.5}
+        return HelloWorldUI()
 
-        ### Add widgets to window (GridLayout) ###
-
-        # Display image
-        self.window.add_widget(Image(source="parrot.jpg"))
-
-        # Display text
-        self.greeting = Label(
-            text='Hello world!',
-            # Label styling
-            font_size=18,
-            color="#00FFCE"
-        )
-        # Add Label to the GridLayout
-        self.window.add_widget(self.greeting)
-
-        # Input text
-        self.user = TextInput(
-            multiline=False,
-            # TextInput styling
-            padding_y=(20, 20),
-            size_hint=(1, 0.5)
-        )
-        # Add TextInput to the GridLayout
-        self.window.add_widget(self.user)
-
-        # Add button
-        self.button = Button(
-            text="Say Hello!",
-            # Button styling
-            size_hint=(1, 0.5),
-            bold=True,
-            background_color="#00FFCE",
-            background_normal=""
-        )
-        # Bind the callback function to the button
-        self.button.bind(on_press=self.button_callback)
-        # Add Button to the GridLayout
-        self.window.add_widget(self.button)
-
-        return self.window
-
-    def button_callback(self, instance):
-        self.greeting.text = "Hello " + self.user.text + "!"
+    # callback function for button on_press event
+    def button_callback(self):
+        self.root.ids.greeting.text = "Hello " + self.root.ids.user.text + "!"
 
 
 if __name__ == '__main__':
-    # Run the GUI
+    # Run the GUI window
     HelloWorld().run()

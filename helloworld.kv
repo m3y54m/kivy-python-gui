@@ -1,0 +1,31 @@
+#:kivy 2.0.0
+
+<HelloWorldUI>:
+    
+    GridLayout:
+        cols: 1
+        size_hint: (0.6, 0.7)
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        Image:
+            source: "parrot.jpg"
+        
+        Label:
+            id: greeting
+            text:"Hello robot!"
+            font_size:18
+            color:"#00FFCE"
+
+        TextInput:
+            id: user
+            multiline: False
+            padding_y: (20, 20)
+            size_hint: (1, 0.5)
+
+        Button:
+            on_press: app.button_callback()
+            text: "Say Hello!"
+            size_hint: (1, 0.5)
+            bold: True
+            background_color: "#00FFCE"
+            background_normal: ""
